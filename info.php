@@ -14,14 +14,14 @@ $data = json_decode($response, true);
 $data = $data['WPOSInformationTime']['row'];
 
 $index = -1;
-for($n = 0; $n < count($data); $n++) {
+for ($n = 0; $n < count($data); $n++) {
     if($data[$n]['SITE_ID'] == "노량진") {
         $index = $n;
         break;
     }
 }
 
-if($index==-1) {
+if ($index==-1) {
     $data = $data[0];
 } else {
     $data = $data[$index];
