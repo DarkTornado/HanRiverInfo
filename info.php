@@ -15,7 +15,7 @@ $data = $data['WPOSInformationTime']['row'];
 
 $index = -1;
 for ($n = 0; $n < count($data); $n++) {
-    if($data[$n]['SITE_ID'] == "노량진") {
+    if ($data[$n]['SITE_ID'] == "노량진") {
         $index = $n;
         break;
     }
