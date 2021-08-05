@@ -1,15 +1,18 @@
 <?php
 header('Content-Type: application/json; charset=utf-8');
 
+/* Data Source */
 $key = "안알랴줌";
 $url = "http://openapi.seoul.go.kr:8088/".$key."/json/WPOSInformationTime/1/5/";
 
+/* Load Data */
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_URL, $url);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 $response = curl_exec($ch);
 curl_close($ch);
 
+/* Parse */
 $data = json_decode($response, true);
 $data = $data['WPOSInformationTime']['row'];
 
@@ -27,6 +30,7 @@ if ($index==-1) {
     $data = $data[$index];
 }
 
+/* Result */
 echo '{';
 echo '"loc":"'.$data['SITE_ID'].'",';
 echo '"date":"'.$data['MSR_DATE'].'",';
