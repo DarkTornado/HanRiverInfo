@@ -8,6 +8,33 @@
 </head>
 
 <body>
+    <h1 id='info'>
+    </h1>
 </body>
+<script>
+    loadData();
+
+    function loadData() {
+        var req = new XMLHttpRequest();
+        req.open("POST", "./info.php");
+        req.setRequestHeader('Content-Type', 'application/json');
+        req.setRequestHeader('Cache-Control', 'no-cache');
+        req.send();
+
+        req.onreadystatechange = function(e) {
+            if (this.readyState == 4 && req.status === 200) {
+                var data = (req.responseText + "").trim();
+                updateData(data);
+            } else {
+                //alert(e);
+            }
+        };
+    }
+
+    function updateData(data) {
+        data = JSON.parse(data);
+        document.getElementById('info').innerHTML = data.temp;
+    }
+</script>
 
 </html>
